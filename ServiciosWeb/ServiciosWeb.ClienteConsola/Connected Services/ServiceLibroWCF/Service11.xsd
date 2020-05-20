@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:63731/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ServiciosWeb.Datos.Modelo" />
+  <xs:element name="ObtenerLibros">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerLibrosResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/ServiciosWeb.Datos.Modelo" minOccurs="0" name="ObtenerLibrosResult" nillable="true" type="q1:ArrayOfLibro" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

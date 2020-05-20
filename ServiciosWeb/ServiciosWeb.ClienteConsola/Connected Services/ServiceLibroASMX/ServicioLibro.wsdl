@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="ObtenerLibros">
+        <s:complexType />
+      </s:element>
+      <s:element name="ObtenerLibrosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ObtenerLibrosResult" type="tns:ArrayOfLibro" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfLibro">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Libro" nillable="true" type="tns:Libro" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Libro">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdLibro" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Titulo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Sipnosis" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Autor" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Editorial" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Idioma" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Formato" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Genero" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Disponible" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ObtenerLibrosSoapIn">
+    <wsdl:part name="parameters" element="tns:ObtenerLibros" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerLibrosSoapOut">
+    <wsdl:part name="parameters" element="tns:ObtenerLibrosResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ServicioLibroSoap">
+    <wsdl:operation name="ObtenerLibros">
+      <wsdl:input message="tns:ObtenerLibrosSoapIn" />
+      <wsdl:output message="tns:ObtenerLibrosSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServicioLibroSoap" type="tns:ServicioLibroSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ObtenerLibros">
+      <soap:operation soapAction="http://tempuri.org/ObtenerLibros" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServicioLibroSoap12" type="tns:ServicioLibroSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ObtenerLibros">
+      <soap12:operation soapAction="http://tempuri.org/ObtenerLibros" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ServicioLibro">
+    <wsdl:port name="ServicioLibroSoap" binding="tns:ServicioLibroSoap">
+      <soap:address location="http://localhost:63582/ServicioLibro.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServicioLibroSoap12" binding="tns:ServicioLibroSoap12">
+      <soap12:address location="http://localhost:63582/ServicioLibro.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
