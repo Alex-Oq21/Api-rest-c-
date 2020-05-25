@@ -5,18 +5,17 @@
 
 <h2>Listado de libros</h2>
 <hr />
+<h2>
+    <a href="@Url.Action("Nuevo", "Libro")" class="btn btn-primary right">Nuevo</a> 
+    Listado de libros
+</h2>
 <table class="table table-bordered">
     <thead>
         <tr>
             <td>Id</td>
             <td>Titulo</td>
-            <td>Sipnosis</td>
             <td>Autor</td>
-            <td>Editorial</td>
-            <td>Idioma</td>
-            <td>Formato</td>
-            <td>Genero</td>
-            <td>Disponible</td>
+            <td>Acciones</td>
         </tr>
 
     </thead>
@@ -26,13 +25,14 @@
             <tr>
                 <td>@libro.IdLibro</td>
                 <td>@libro.Titulo</td>
-                <td>@libro.Sipnosis</td>
-                <td>@libro.Autor</td>
-                <td>@libro.Editorial</td>
-                <td>@libro.Idioma</td>
-                <td>@libro.Formato</td>
-                <td>@libro.Genero</td>
-                <td>@libro.Disponible</td>
+                <td>@libro.Autor</td>               
+                <td>
+                    <a href="@Url.Action("Actualizar", "Libro", new {id=libro.IdLibro })" class="btn btn-success right">Actualizar</a>
+                    <a href="@Url.Action("Eliminar", "Libro", new {id=libro.IdLibro })" class="btn btn-danger right">Eliminar</a>
+                    <a href="@Url.Action("Detalle", "Libro", new {id=libro.IdLibro })" class="btn btn-default right">Ver Detalle</a>
+
+
+                </td>
             </tr>
 
         }
